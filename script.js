@@ -8,14 +8,17 @@ const score = document.querySelector(".score");
 //Number to guess
 const randomNumber = Math.floor(Math.random() * 20) + 1;
 
+let scoreResult = 0;
+
 //Check button
 const handleCheck = () => {
   const guess = Number(guessedNumber.value);
   const numberToGuessValue = Number(numberToGuess.value);
-  console.log(guess, typeof guess);
   numberToGuess.textContent = numberToGuessValue;
   if (guess === numberToGuessValue) {
     message.textContent = "Correct!";
+    scoreResult++;
+    score.textContent = scoreResult;
   } else if (guess !== numberToGuessValue) {
     message.textContent = "Wrong guess! Try again!";
   }
@@ -28,7 +31,6 @@ const handleAgain = () => {
   numberToGuess.textContent = "?";
   message.textContent = "Start guessing...";
   guessedNumber.value = "";
-  console.log((numberToGuess.value = randomNumber));
   numberToGuess.value = randomNumber;
 };
 againButton.addEventListener("click", handleAgain);
